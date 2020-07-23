@@ -3,11 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "npm run clean && npm run build-babel",
-    "build-babel": "babel -d ./build ./src -s --copy-files",
-    "clean": "rm -rf build",
-    "start": "npm run build && node ./build/bin/www",
-    "start:dev": "nodemon --exec babel-node ./src/bin/www"
+    "start": "node ./src/bin/www",
+    "start:dev": "nodemon ./src/bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
