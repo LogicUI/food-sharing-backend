@@ -1,3 +1,20 @@
-export const addUser = (req, res) => {
-    res.send('adduser')
+const model = require("../db/config/models/index");
+
+ const registerUser = async (req,res) => {
+
+    const {username, password, email} = req.body;
+
+    const result = await model.User.create({
+        username: username,
+        password: password,
+        email: email
+    })
+
+    console.log(result);
+    res.status(200).send("success");
+
+}
+
+module.exports = {
+    registerUser
 }
