@@ -10,7 +10,6 @@ const model = require("../db/config/models/index");
         email: email
     })
 
-    console.log(result);
     res.status(200).send("success");
 
 }
