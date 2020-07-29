@@ -21,7 +21,10 @@ module.exports = (sequelize, DataTypes) => {
   User.init({
     username: DataTypes.STRING,
     password: DataTypes.STRING,
-    email: DataTypes.STRING,
+    email: {
+      type:DataTypes.STRING,
+      primaryKey:true 
+    },
     isVerified: {
      type: DataTypes.BOOLEAN,
      defaultValue: false
