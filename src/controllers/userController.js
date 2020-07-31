@@ -12,7 +12,6 @@ const duplicateError = {
     const saltRounds = 10;
 
     const {username, password, email} = req.body;
-    
     const hashPassword = await bycrypt.hash(password,saltRounds);
 
     try{
