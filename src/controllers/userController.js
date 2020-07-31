@@ -22,12 +22,11 @@ const duplicateError = {
         })
     }catch(error){
         if(error.code === duplicateError.DUPLCATE_KEY){
-            res.status(400).send("an email with this account already exists");
+            return res.status(400).send("an email with this account already exists");
         }            
     }
 
-    res.send("successfully created an account");
-
+    return res.send("successfully created an account");
 }
 
 module.exports = {

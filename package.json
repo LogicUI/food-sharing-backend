@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./src/bin/www",
     "start:dev": "nodemon ./src/bin/www",
-    "test": "jest --watchAll --runInBand"
+    "test": "jest --watchAll"
   },
   "dependencies": {
     "@hapi/joi": "^17.1.1",
