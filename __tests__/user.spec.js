@@ -117,7 +117,6 @@ describe("user register test", () => {
           if (err) {
             return done(err);
           }
-          console.log(res.body.error);
           expect(res.body.error).toBe('"password" is not allowed to be empty');
         });
     });
