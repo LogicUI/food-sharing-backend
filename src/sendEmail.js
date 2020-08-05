@@ -1,4 +1,6 @@
 const sgMail = require("@sendgrid/mail");
+require("custom-env").env("local");
+
 
 const sendEmail = (email) => {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
