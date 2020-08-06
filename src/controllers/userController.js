@@ -75,7 +75,7 @@ const userLogin = async (req, res) => {
                 res.send('succesfully logged in')
             }
             else {
-                res.send('wrong password')
+                res.send(err)
             }
         })
     }

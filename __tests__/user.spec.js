@@ -2,12 +2,16 @@ const app = require("../src/app");
 const request = require("supertest");
 const models = require("../src/db/config/models/index");
 
+afterAll(() => {
+  models.sequelize.close()
+})
+
 describe("user register test", () => {
   afterEach(async () => {
     await models.User.destroy({
       where: {},
     });
-  });
+  });  
 
   it("should successfully create an account when the right parameters", (done) => {
     request(app)
@@ -103,8 +107,7 @@ describe("user register test", () => {
           done();
         });
     });
-
-    it("should return an error with response 400 if request body does not container password", () => {
+    it("should return an error with response 400 if request body does not container password", (done) => {
       request(app)
         .post("/users")
         .send({
@@ -118,26 +121,11 @@ describe("user register test", () => {
             return done(err);
           }
           expect(res.body.error).toBe('"password" is not allowed to be empty');
-        });
-    });
-    it("should return an error with response 400 if request body does not container password", () => {
-      request(app)
-        .post("/users")
-        .send({
-          username: "test",
-          password: "",
-          email: "test@gmail.com",
-        })
-        .expect(400)
-        .end(function (err, res) {
-          if (err) {
-            return done(err);
-          }
-          expect(res.body.error).toBe('"password" is not allowed to be empty');
+          done()
         });
     });
 
-    it("should return an error with response 400 if request body does not contain a email", () => {
+    it("should return an error with response 400 if request body does not contain a email", (done) => {
       request(app)
         .post("/users")
         .send({
@@ -151,6 +139,7 @@ describe("user register test", () => {
             return done(err);
           }
           expect(res.body.error).toBe('"email" is not allowed to be empty');
+          done()
         });
     });
   });
